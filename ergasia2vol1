@@ -1,29 +1,19 @@
-word=str(input("Write a word:"))
 x=("f","c","k","r")
 y=("b","d","g","h","j","l","m","n","p","q","s","t","v","w","x","y","z")
 bad=0
 good=0
-nospaces=word.replace(" ","")
-allsmall=nospaces.lower()
-for i in range(0,9):
-    number=str(i)
-    nonums=allsmall.count(number)
-    if(int(nonums)>0):
-        key=1
-        break
-    else:
-        key=0
-for a in range (0,4):
-    badletter=allsmall.count(x[a])
-    bad=bad+badletter
-for b in range (0,17):
-    goodletter=allsmall.count(y[b])
-    good=good+goodletter
-if (key==1):
-    print("Words don't have numbers in them, try again")
-else:
-    if (bad>good):
-        print("That is a bad word")
-    else:
-        print("That is a good word")
 
+with open('02ergasia.py','r') as f:
+    for word in f.read().split():
+        for a in range (0,4):
+            badletter=word.count(x[a])
+            bad=bad+badletter
+        for b in range (0,17):
+            goodletter=word.count(y[b])
+            good=good+goodletter
+        if (bad>good):
+                print("That is a bad word")
+        else:
+                print("That is a good word")
+        bad=0
+        good=0
